@@ -8,9 +8,13 @@
 </head>
 <body>
     <div class="container">
-        <h1> Hello From Flask</h1>
-        <p> This is a simple web page served by flask application</p>
-        <p> We did it! </p>
+        <h1> Did you know? </h1>
+        <p id="fact">{{fact}} </p>
+        <div class="button-wrapper">
+            <button id="new-fact-btn"> Get a new Fact! </button>
+        </div>
     </div>
+
+<script src="{{url_for('static', filename='script.js')}}"> </script>
 </body>
 </html>
