@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 import random
 
 app = Flask(__name__)
@@ -25,9 +25,17 @@ def home():
 
     """
     # Use random.choice() t get a random fact from the list
+
+    return render_template('index.html', facts=facts[0]) # this returns the index.html to the  browser
+
+# A new API endpoint that serves  random fact as JSON
+
+@app.route('/api/fact', methods=['GET'])
+def get_random_fact():
+
     random_fact = random.choice(facts)
 
-    return render_template('index.html', facts=random_fact) # this returns the index.html to the  browser
+    return jsonify({'fact': random_fact})
 
 if __name__ == "__main__":
     app.run(debug=True)
